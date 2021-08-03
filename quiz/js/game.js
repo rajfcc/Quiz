@@ -6,6 +6,7 @@ let que_numb = 1;
 let timeValue = 20;
 let widthValue = 0;
 
+
 const quiz_box = document.querySelector(".quiz_box");
 const next_btn = document.querySelector(".next_btn");
 const result_box = document.querySelector(".result_box");
@@ -14,6 +15,8 @@ const quit_quiz = result_box.querySelector(".buttons .quit");
 const option_chart = document.querySelector(".option_list");
 const timeCount = document.querySelector(".timer .timer_sec");
 const timeLine = document.querySelector("header .time_line")
+const timeOff = document.querySelector(".timer .time_text")
+timeOff.textContent = "Time Left";
 let counter;
 function startTimer(time){
     counter = setInterval(timer, 1000);
@@ -27,7 +30,7 @@ function startTimer(time){
         if(time < 0){
             clearInterval(counter);
             timeCount.textContent = "00";
-
+            timeOff.textContent = "Time Off";
             let correctAns = questions[que_count].answer;
             let allOptions = option_chart.children.length;
 
@@ -70,8 +73,11 @@ next_btn.onclick = ()=>{
     clearInterval(counterLine);
     startTimerLine(widthValue);
     next_btn.style.display = "none";
+    timeOff.textContent = "Time Left";
 }
     else{
+        clearInterval(counter);
+    clearInterval(counterLine);
         console.log("Questions Completed");
         showResultBox();
     }
