@@ -1,0 +1,9 @@
+body{
+    background-image: url(cg.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
+/* .modal{
+    opacity: 0;
+} */
